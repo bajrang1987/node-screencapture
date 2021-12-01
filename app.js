@@ -101,12 +101,15 @@ app.get("/pdf/:action?", async (req, res, next) => {
     }
 })
 
+app.get('/', (req, res, next) => {
+    res.send("<h1>Hello World</h1>")
+})
+
 app.use((err, req, res, next) => {
     res.status(400).json({
         error: err.message
     })
 })
 
-const PORT = process.env.PORT || 80;
-const Host = 'screenshot.prometteur.in';
-app.listen(PORT, Host, () => console.log("Server listing on port " + PORT));
+const PORT = process.env.PORT || 3600;
+app.listen(PORT, () => console.log("Server listing on port " + PORT));
