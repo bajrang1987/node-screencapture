@@ -107,5 +107,6 @@ app.use((err, req, res, next) => {
     })
 })
 
-const PORT = process.env.PORT || 3600;
-app.listen(PORT, () => console.log("Server listing on port " + PORT));
+const PORT = process.env.PORT || 80;
+const Host = 'screenshot.prometteur.in';
+app.listen(PORT, Host, () => console.log("Server listing on port " + PORT));
