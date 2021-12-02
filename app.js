@@ -61,7 +61,9 @@ app.get("/pdf/:action?", async (req, res, next) => {
         let { url, one_page, width, height, filename } = validatePdfQuery(query);
         filename = filename ? filename : "attachment";
         const options = { printBackground: true };
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
         const page = await browser.newPage();
         await page.goto(url, {
             waitUntil: 'networkidle2',
