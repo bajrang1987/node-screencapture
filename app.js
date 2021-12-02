@@ -62,7 +62,9 @@ app.get("/pdf/:action?", async (req, res, next) => {
         filename = filename ? filename : "attachment";
         const options = { printBackground: true };
         const browser = await puppeteer.launch({
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            //args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            headless: true,
+            args: ['--use-gl=egl'],
         });
         const page = await browser.newPage();
         await page.goto(url, {
